@@ -11,7 +11,7 @@ class GetStartedPage extends StatelessWidget {
           Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
                   'assets/image_get_started.png',
@@ -28,7 +28,7 @@ class GetStartedPage extends StatelessWidget {
                   style: whiteTextStyle.copyWith(
                       fontSize: 32, fontWeight: semiBold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
@@ -40,7 +40,7 @@ class GetStartedPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 50, bottom: 80),
+                  margin: const EdgeInsets.only(top: 50, bottom: 80),
                   width: 200,
                   height: 55,
                   child: TextButton(
