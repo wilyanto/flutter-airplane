@@ -1,3 +1,4 @@
+import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/sign_up/sign_up_page.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
@@ -40,28 +41,12 @@ class GetStartedPage extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                Container(
+                CtaButton(
+                  title: 'Get Started',
+                  width: 220,
                   margin: const EdgeInsets.only(top: 50, bottom: 80),
-                  width: 200,
-                  height: 55,
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, SignUpPage.routeName);
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: kPrimaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(defaultRadius),
-                      ),
-                    ),
-                    child: Text(
-                      'Get Started',
-                      style: whiteTextStyle.copyWith(
-                        fontSize: 18,
-                        fontWeight: medium,
-                      ),
-                    ),
-                  ),
+                  onPressed: () =>
+                      Navigator.pushNamed(context, SignUpPage.routeName),
                 ),
               ],
             ),

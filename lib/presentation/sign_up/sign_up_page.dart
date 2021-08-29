@@ -1,4 +1,5 @@
 import 'package:airplane/presentation/bosus/bonus_page.dart';
+import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -147,27 +148,9 @@ class SignUpPage extends StatelessWidget {
             ),
           );
 
-      Widget submitButton() => Container(
-            width: double.infinity,
-            height: 55,
-            child: TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, BonusPage.routeName);
-              },
-              style: TextButton.styleFrom(
-                backgroundColor: kPrimaryColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(defaultRadius),
-                ),
-              ),
-              child: Text(
-                'Get Started',
-                style: whiteTextStyle.copyWith(
-                  fontSize: 19,
-                  fontWeight: medium,
-                ),
-              ),
-            ),
+      Widget submitButton() => CtaButton(
+            title: 'Get Started',
+            onPressed: () => Navigator.pushNamed(context, BonusPage.routeName),
           );
 
       return Container(

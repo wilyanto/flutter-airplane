@@ -1,3 +1,4 @@
+import 'package:airplane/presentation/main/main_page.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -112,7 +113,9 @@ class BonusPage extends StatelessWidget {
           height: 55,
           width: 220,
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, MainPage.routeName);
+            },
             style: TextButton.styleFrom(
               backgroundColor: kPrimaryColor,
               shape: RoundedRectangleBorder(
