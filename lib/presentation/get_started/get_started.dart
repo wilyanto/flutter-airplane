@@ -2,6 +2,7 @@ import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 class GetStartedPage extends StatelessWidget {
+  static const routeName = '/get-started';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
