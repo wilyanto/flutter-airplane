@@ -1,9 +1,12 @@
+import 'package:airplane/presentation/home/home_page.dart';
 import 'package:airplane/presentation/main/widgets/custom_bottom_navigation_item.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatelessWidget {
   static const routeName = 'main-page';
+
+  Widget buildContent() => HomePage();
 
   Widget customBottomNavigation() => Align(
         alignment: Alignment.bottomCenter,
@@ -42,6 +45,7 @@ class MainPage extends StatelessWidget {
       backgroundColor: kBackgroundColor,
       body: Stack(
         children: [
+          buildContent(),
           customBottomNavigation(),
         ],
       ),
