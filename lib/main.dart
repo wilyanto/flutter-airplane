@@ -1,9 +1,9 @@
-import 'package:airplane/presentation/bosus/bonus_page.dart';
 import 'package:airplane/presentation/get_started/get_started.dart';
 import 'package:airplane/presentation/main/main_page.dart';
 import 'package:airplane/presentation/sign_up/sign_up_page.dart';
 import 'package:flutter/material.dart';
 
+import 'presentation/bonus/bonus_page.dart';
 import 'presentation/splash/splash_page.dart';
 
 void main() {
