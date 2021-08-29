@@ -1,3 +1,4 @@
+import 'package:airplane/presentation/bosus/bonus_page.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -150,7 +151,9 @@ class SignUpPage extends StatelessWidget {
             width: double.infinity,
             height: 55,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, BonusPage.routeName);
+              },
               style: TextButton.styleFrom(
                 backgroundColor: kPrimaryColor,
                 shape: RoundedRectangleBorder(
