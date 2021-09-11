@@ -1,4 +1,5 @@
 import 'package:airplane/presentation/booking/select_seat_page.dart';
+import 'package:airplane/presentation/checkout/checkout_page.dart';
 import 'package:airplane/presentation/destination/destination_detail_page.dart';
 import 'package:airplane/presentation/get_started/get_started.dart';
 import 'package:airplane/presentation/main/main_page.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         MainPage.routeName: (context) => MainPage(),
         DestinationDetailPage.routeName: (context) => DestinationDetailPage(),
         SelectSeatPage.routeName: (context) => SelectSeatPage(),
+        CheckoutPage.routeName: (context) => CheckoutPage(),
       },
     );
   }
