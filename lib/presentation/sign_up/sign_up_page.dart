@@ -1,6 +1,7 @@
 import 'package:airplane/presentation/bonus/bonus_page.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/core/widgets/custom_text_form_field.dart';
+import 'package:airplane/presentation/core/widgets/tac.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -68,19 +69,6 @@ class SignUpPage extends StatelessWidget {
       );
     }
 
-    Widget tacButton() => Container(
-          alignment: Alignment.center,
-          margin: const EdgeInsets.only(top: 50, bottom: 73),
-          child: Text(
-            'Terms and Conditions',
-            style: greenTextStyle.copyWith(
-              fontSize: 16,
-              fontWeight: light,
-              decoration: TextDecoration.underline,
-            ),
-          ),
-        );
-
     return Scaffold(
       backgroundColor: kBackgroundColor,
       body: SafeArea(
@@ -89,7 +77,7 @@ class SignUpPage extends StatelessWidget {
           children: [
             title(),
             inputSection(),
-            tacButton(),
+            TacButton(),
           ],
         ),
       ),

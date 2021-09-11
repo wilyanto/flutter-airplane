@@ -1,4 +1,6 @@
 import 'package:airplane/presentation/checkout/widgets/booking_detail_item.dart';
+import 'package:airplane/presentation/core/widgets/cta_button.dart';
+import 'package:airplane/presentation/core/widgets/tac.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +9,7 @@ class CheckoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget route() => Container(
-          margin: const EdgeInsets.only(top: 50),
+          margin: const EdgeInsets.only(top: 30),
           child: Column(
             children: [
               Container(
@@ -186,14 +188,116 @@ class CheckoutPage extends StatelessWidget {
           ),
         );
 
+    Widget paymentDetails() => Container(
+          margin: const EdgeInsets.only(top: 30),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 30,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(
+              defaultRadius,
+            ),
+            color: kWhiteColor,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Payment Details',
+                style: blackTextStyle.copyWith(
+                  fontSize: 16,
+                  fontWeight: semiBold,
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 16),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 100,
+                      height: 70,
+                      margin: const EdgeInsets.only(right: 16),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(defaultRadius),
+                        image: const DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage('assets/image_card.png'),
+                        ),
+                      ),
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: 24,
+                              height: 25,
+                              margin: const EdgeInsets.only(right: 6),
+                              decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage('assets/icon_plane.png'),
+                                ),
+                              ),
+                            ),
+                            Text(
+                              'Pay',
+                              style: whiteTextStyle.copyWith(
+                                fontSize: 16,
+                                fontWeight: medium,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'IDR 80.400.000',
+                          style: blackTextStyle.copyWith(
+                            fontSize: 18,
+                            fontWeight: medium,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Current Balance',
+                          style: greyTextStyle.copyWith(
+                            fontWeight: light,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+
+    Widget payNowButton() => CtaButton(
+          margin: const EdgeInsets.only(top: 30),
+          title: 'Pay Now',
+          onPressed: () {},
+        );
+
     return Scaffold(
       backgroundColor: kBackgroundColor,
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-        children: [
-          route(),
-          bookingDetails(),
-        ],
+      body: SafeArea(
+        child: ListView(
+          padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+          children: [
+            route(),
+            bookingDetails(),
+            paymentDetails(),
+            payNowButton(),
+            TacButton(),
+          ],
+        ),
       ),
     );
   }
