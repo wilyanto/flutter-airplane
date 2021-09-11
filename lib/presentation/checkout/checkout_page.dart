@@ -1,3 +1,4 @@
+import 'package:airplane/presentation/checkout/success/sucess_checkout_page.dart';
 import 'package:airplane/presentation/checkout/widgets/booking_detail_item.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/core/widgets/tac.dart';
@@ -282,7 +283,9 @@ class CheckoutPage extends StatelessWidget {
     Widget payNowButton() => CtaButton(
           margin: const EdgeInsets.only(top: 30),
           title: 'Pay Now',
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, SuccessCheckoutPage.routeName);
+          },
         );
 
     return Scaffold(
