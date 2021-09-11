@@ -1,3 +1,4 @@
+import 'package:airplane/presentation/checkout/widgets/booking_detail_item.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -71,6 +72,7 @@ class CheckoutPage extends StatelessWidget {
             color: kWhiteColor,
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // NOTE: DESTIONATION TILE
               Row(
@@ -95,7 +97,7 @@ class CheckoutPage extends StatelessWidget {
                           'Lake Ciliwung',
                           style: blackTextStyle.copyWith(
                             fontSize: 18,
-                            fontWeight: medium,
+                            fontWeight: semiBold,
                           ),
                         ),
                         const SizedBox(
@@ -130,6 +132,55 @@ class CheckoutPage extends StatelessWidget {
                     ],
                   )
                 ],
+              ),
+
+              // NOTE: BOOKING DETAILS TEXT
+              Container(
+                margin: const EdgeInsets.only(top: 20),
+                child: Text(
+                  'Booking Details',
+                  style: blackTextStyle.copyWith(
+                    fontSize: 16,
+                    fontWeight: semiBold,
+                  ),
+                ),
+              ),
+
+              // NOTE: BOOKING DETAILS ITEM
+              BookingDetailItem(
+                title: 'Traveler',
+                valueText: '2 person',
+                valueColor: kBlackColor,
+              ),
+              BookingDetailItem(
+                title: 'Seat',
+                valueText: 'A3, B3',
+                valueColor: kBlackColor,
+              ),
+              BookingDetailItem(
+                title: 'Insurance',
+                valueText: 'YES',
+                valueColor: kGreenColor,
+              ),
+              BookingDetailItem(
+                title: 'Refundable',
+                valueText: 'NO',
+                valueColor: kRedColor,
+              ),
+              BookingDetailItem(
+                title: 'VAT',
+                valueText: '45%',
+                valueColor: kBlackColor,
+              ),
+              BookingDetailItem(
+                title: 'Price',
+                valueText: 'IDR 8.500.690',
+                valueColor: kBlackColor,
+              ),
+              BookingDetailItem(
+                title: 'Grand Total',
+                valueText: 'IDR 12.000.000',
+                valueColor: kPrimaryColor,
               ),
             ],
           ),
