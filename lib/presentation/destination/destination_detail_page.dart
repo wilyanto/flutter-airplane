@@ -1,3 +1,4 @@
+import 'package:airplane/presentation/booking/select_seat_page.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/destination/widgets/interest_item.dart';
 import 'package:airplane/presentation/destination/widgets/photo_item.dart';
@@ -237,7 +238,9 @@ class DestinationDetailPage extends StatelessWidget {
                     // NOTE: BOOK BUTTON
                     CtaButton(
                       title: 'Book Now',
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, SelectSeatPage.routeName);
+                      },
                       width: 170,
                     ),
                   ],

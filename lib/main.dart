@@ -1,3 +1,4 @@
+import 'package:airplane/presentation/booking/select_seat_page.dart';
 import 'package:airplane/presentation/destination/destination_detail_page.dart';
 import 'package:airplane/presentation/get_started/get_started.dart';
 import 'package:airplane/presentation/main/main_page.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         BonusPage.routeName: (context) => BonusPage(),
         MainPage.routeName: (context) => MainPage(),
         DestinationDetailPage.routeName: (context) => DestinationDetailPage(),
+        SelectSeatPage.routeName: (context) => SelectSeatPage(),
       },
     );
   }
