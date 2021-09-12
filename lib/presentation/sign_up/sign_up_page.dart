@@ -62,7 +62,7 @@ class SignUpPage extends StatelessWidget {
                 Navigator.pushNamedAndRemoveUntil(
                     context, BonusPage.routeName, (route) => false);
               } else if (state is AuthFailed) {
-                CustomSnackBar().show(title: 'Error', descrption: state.error);
+                CustomSnackBar().show(descrption: state.error);
               }
             },
             builder: (context, state) {
