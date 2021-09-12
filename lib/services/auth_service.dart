@@ -13,15 +13,10 @@ class AuthService {
       final UserCredential userCredential = await _firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
 
-      print('a: $userCredential');
-
       final UserModel user =
           await UserService().getUserById(userCredential.user!.uid);
-
-      print('b: $user');
       return user;
-    } catch (e, s) {
-      print(s.toString());
+    } catch (e) {
       rethrow;
     }
   }

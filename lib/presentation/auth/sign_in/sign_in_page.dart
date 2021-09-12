@@ -1,10 +1,8 @@
 import 'package:airplane/cubit/auth/auth_cubit.dart';
 import 'package:airplane/presentation/auth/sign_up/sign_up_page.dart';
-import 'package:airplane/presentation/bonus/bonus_page.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/core/widgets/custom_text_form_field.dart';
 import 'package:airplane/presentation/core/widgets/snack_bar.dart';
-import 'package:airplane/presentation/core/widgets/tac.dart';
 import 'package:airplane/presentation/main/main_page.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
