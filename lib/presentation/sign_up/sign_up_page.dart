@@ -7,15 +7,15 @@ import 'package:airplane/presentation/core/widgets/tac.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
-// ignore: must_be_immutable
 class SignUpPage extends StatelessWidget {
   static const routeName = 'sign-up';
 
-  TextEditingController nameC = TextEditingController();
-  TextEditingController emailC = TextEditingController();
-  TextEditingController passwordC = TextEditingController();
-  TextEditingController hobbyC = TextEditingController();
+  final TextEditingController nameC = TextEditingController();
+  final TextEditingController emailC = TextEditingController();
+  final TextEditingController passwordC = TextEditingController();
+  final TextEditingController hobbyC = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

@@ -10,6 +10,7 @@ import 'package:airplane/presentation/sign_up/sign_up_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 import 'presentation/bonus/bonus_page.dart';
 import 'presentation/splash/splash_page.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
           create: (BuildContext context) => AuthCubit(),
         ),
       ],
-      child: MaterialApp(
+      child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
           SplashPage.routeName: (BuildContext context) => SplashPage(),
