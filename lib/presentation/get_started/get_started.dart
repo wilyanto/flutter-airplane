@@ -1,5 +1,5 @@
+import 'package:airplane/presentation/auth/sign_up/sign_up_page.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
-import 'package:airplane/presentation/sign_up/sign_up_page.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 

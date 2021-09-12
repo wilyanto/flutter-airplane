@@ -1,7 +1,7 @@
 import 'package:airplane/cubit/auth/auth_cubit.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/core/widgets/snack_bar.dart';
-import 'package:airplane/presentation/sign_up/sign_up_page.dart';
+import 'package:airplane/presentation/auth/sign_up/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

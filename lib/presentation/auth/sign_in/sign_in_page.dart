@@ -1,4 +1,5 @@
 import 'package:airplane/cubit/auth/auth_cubit.dart';
+import 'package:airplane/presentation/auth/sign_up/sign_up_page.dart';
 import 'package:airplane/presentation/bonus/bonus_page.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/core/widgets/custom_text_form_field.dart';
@@ -7,22 +8,19 @@ import 'package:airplane/presentation/core/widgets/tac.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 
-class SignUpPage extends StatelessWidget {
-  static const routeName = 'sign-up';
+class SignInPage extends StatelessWidget {
+  static const routeName = 'sign-in';
 
-  final TextEditingController nameC = TextEditingController();
   final TextEditingController emailC = TextEditingController();
   final TextEditingController passwordC = TextEditingController();
-  final TextEditingController hobbyC = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     Widget title() => Container(
           margin: const EdgeInsets.only(top: 30),
           child: Text(
-            'Join us and get\nyour next journey',
+            'Sign In with your\nexisting account',
             style: blackTextStyle.copyWith(
               fontSize: 24,
               fontWeight: semiBold,
@@ -31,12 +29,6 @@ class SignUpPage extends StatelessWidget {
         );
 
     Widget inputSection() {
-      Widget nameInput() => CustomTextFormField(
-            title: 'Full Name',
-            hintText: 'Your fullname',
-            controller: nameC,
-          );
-
       Widget emailInput() => CustomTextFormField(
             title: 'Email Address',
             hintText: 'Your email address',
@@ -48,12 +40,6 @@ class SignUpPage extends StatelessWidget {
             hintText: 'Your password',
             isObscureText: true,
             controller: passwordC,
-          );
-
-      Widget hobbyInput() => CustomTextFormField(
-            title: 'Hobby',
-            hintText: 'Your hobby',
-            controller: hobbyC,
           );
 
       Widget submitButton() => BlocConsumer<AuthCubit, AuthState>(
@@ -73,13 +59,12 @@ class SignUpPage extends StatelessWidget {
               }
 
               return CtaButton(
-                title: 'Get Started',
-                onPressed: () => context.read<AuthCubit>().signUp(
-                      email: emailC.text,
-                      password: passwordC.text,
-                      name: nameC.text,
-                      hobby: hobbyC.text,
-                    ),
+                title: 'Sign In',
+                onPressed: () {},
+                // onPressed: () => context.read<AuthCubit>().sign(
+                //       email: emailC.text,
+                //       password: passwordC.text,
+                //     ),
               );
             },
           );
@@ -96,15 +81,31 @@ class SignUpPage extends StatelessWidget {
         ),
         child: Column(
           children: [
-            nameInput(),
             emailInput(),
             passwordInput(),
-            hobbyInput(),
             submitButton(),
           ],
         ),
       );
     }
+
+    Widget signUpButton() => GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.only(top: 35, bottom: defaultMargin),
+            child: Text(
+              "Don't have an account? Sign Up",
+              style: greenTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: light,
+                decoration: TextDecoration.underline,
+              ),
+            ),
+          ),
+        );
 
     return Scaffold(
       backgroundColor: kBackgroundColor,
@@ -114,7 +115,7 @@ class SignUpPage extends StatelessWidget {
           children: [
             title(),
             inputSection(),
-            TacButton(),
+            signUpButton(),
           ],
         ),
       ),

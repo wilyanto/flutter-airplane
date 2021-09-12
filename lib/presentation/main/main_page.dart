@@ -69,15 +69,17 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackgroundColor,
-      body: BlocBuilder<PageCubit, int>(
-        builder: (context, pageIndex) {
-          return Stack(
-            children: [
-              buildContent(pageIndex),
-              customBottomNavigation(),
-            ],
-          );
-        },
+      body: SafeArea(
+        child: BlocBuilder<PageCubit, int>(
+          builder: (context, pageIndex) {
+            return Stack(
+              children: [
+                buildContent(pageIndex),
+                customBottomNavigation(),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
