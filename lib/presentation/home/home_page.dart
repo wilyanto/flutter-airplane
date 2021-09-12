@@ -1,12 +1,17 @@
 import 'package:airplane/cubit/auth/auth_cubit.dart';
+import 'package:airplane/cubit/destination/destination_cubit.dart';
+import 'package:airplane/models/destination_model.dart';
+import 'package:airplane/presentation/core/widgets/snack_bar.dart';
 import 'package:airplane/presentation/home/widgets/destination_tile.dart';
 import 'package:airplane/presentation/home/widgets/popular_destination_card.dart';
-import 'package:airplane/services/destination_service.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends HookWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   Widget header() {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
@@ -65,47 +70,22 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget popularDestination() => Container(
-        margin: const EdgeInsets.only(top: 30),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: const <Widget>[
-              PopularDestinationCard(
-                name: 'Lake Ciliwung',
-                city: 'Tangerang',
-                filename: 'image_destination1',
-                rating: 4.8,
-              ),
-              PopularDestinationCard(
-                name: 'White Houses',
-                city: 'Spain',
-                filename: 'image_destination2',
-                rating: 4.7,
-              ),
-              PopularDestinationCard(
-                name: 'Hill Heyo',
-                city: 'Monaco',
-                filename: 'image_destination3',
-                rating: 4.8,
-              ),
-              PopularDestinationCard(
-                name: 'Menarra',
-                city: 'Japan',
-                filename: 'image_destination4',
-                rating: 5.0,
-              ),
-              PopularDestinationCard(
-                name: 'Payung Teduh',
-                city: 'Singapore',
-                filename: 'image_destination5',
-                rating: 4.8,
-              ),
-              SizedBox(width: 20),
-            ],
-          ),
-        ),
-      );
+  Widget popularDestination(List<DestinationModel> destinations) {
+    final List<Widget> listRow = [];
+    listRow.addAll(destinations
+        .map(
+            (DestinationModel e) => PopularDestinationCard(destinationModel: e))
+        .toList());
+    listRow.add(const SizedBox(width: 20));
+
+    return Container(
+      margin: const EdgeInsets.only(top: 30),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(children: listRow),
+      ),
+    );
+  }
 
   Widget newDestination() => Container(
         margin: EdgeInsets.only(
@@ -160,12 +140,31 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        header(),
-        popularDestination(),
-        newDestination(),
-      ],
+    useEffect(() {
+      context.read<DestinationCubit>().fetchDestinations();
+    });
+
+    return BlocConsumer<DestinationCubit, DestinationState>(
+      listener: (context, state) {
+        if (state is DestinationFailed) {
+          CustomSnackBar().show(descrption: state.error);
+        }
+      },
+      builder: (context, state) {
+        if (state is DestinationSuccess) {
+          return ListView(
+            children: [
+              header(),
+              popularDestination(state.destinations),
+              newDestination(),
+            ],
+          );
+        }
+
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
     );
   }
 }
