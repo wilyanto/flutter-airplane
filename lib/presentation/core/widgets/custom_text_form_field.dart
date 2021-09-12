@@ -7,11 +7,13 @@ class CustomTextFormField extends StatelessWidget {
     required this.title,
     required this.hintText,
     this.isObscureText = false,
+    required this.controller,
   }) : super(key: key);
 
   final String title;
   final String hintText;
   final bool isObscureText;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class CustomTextFormField extends StatelessWidget {
             obscureText: isObscureText,
             cursorColor: kBlackColor,
             style: blackTextStyle.copyWith(fontSize: 16),
+            controller: controller,
             decoration: InputDecoration(
               hintText: hintText,
               border: OutlineInputBorder(

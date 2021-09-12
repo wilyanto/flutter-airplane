@@ -1,3 +1,4 @@
+import 'package:airplane/cubit/auth/auth_cubit.dart';
 import 'package:airplane/cubit/bottom_navigation/page_cubit.dart';
 import 'package:airplane/presentation/booking/select_seat_page.dart';
 import 'package:airplane/presentation/checkout/checkout_page.dart';
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (BuildContext context) => PageCubit(),
+        ),
+        BlocProvider(
+          create: (BuildContext context) => AuthCubit(),
         ),
       ],
       child: MaterialApp(

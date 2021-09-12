@@ -5,8 +5,15 @@ import 'package:airplane/presentation/core/widgets/tac.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class SignUpPage extends StatelessWidget {
   static const routeName = 'sign-up';
+
+  TextEditingController nameC = TextEditingController();
+  TextEditingController emailC = TextEditingController();
+  TextEditingController passwordC = TextEditingController();
+  TextEditingController hobbyC = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Widget title() => Container(
@@ -21,25 +28,29 @@ class SignUpPage extends StatelessWidget {
         );
 
     Widget inputSection() {
-      Widget nameInput() => const CustomTextFormField(
+      Widget nameInput() => CustomTextFormField(
             title: 'Full Name',
             hintText: 'Your fullname',
+            controller: nameC,
           );
 
-      Widget emailInput() => const CustomTextFormField(
+      Widget emailInput() => CustomTextFormField(
             title: 'Email Address',
             hintText: 'Your email address',
+            controller: emailC,
           );
 
-      Widget passwordInput() => const CustomTextFormField(
+      Widget passwordInput() => CustomTextFormField(
             title: 'Password',
             hintText: 'Your password',
             isObscureText: true,
+            controller: passwordC,
           );
 
-      Widget hobbyInput() => const CustomTextFormField(
+      Widget hobbyInput() => CustomTextFormField(
             title: 'Hobby',
             hintText: 'Your hobby',
+            controller: hobbyC,
           );
 
       Widget submitButton() => CtaButton(
