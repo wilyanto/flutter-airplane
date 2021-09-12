@@ -2,11 +2,6 @@ import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 class CtaButton extends StatelessWidget {
-  final String title;
-  final double width;
-  final EdgeInsets margin;
-  final Function() onPressed;
-
   const CtaButton({
     Key? key,
     required this.title,
@@ -14,6 +9,11 @@ class CtaButton extends StatelessWidget {
     this.margin = EdgeInsets.zero,
     required this.onPressed,
   }) : super(key: key);
+
+  final String title;
+  final double width;
+  final EdgeInsets margin;
+  final Function() onPressed;
 
   @override
   Widget build(BuildContext context) {

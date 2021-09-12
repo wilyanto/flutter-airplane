@@ -17,7 +17,7 @@ class GetStartedPage extends StatelessWidget {
               image: DecorationImage(
                 image: AssetImage(
                   'assets/image_get_started.png',
-                ), 
+                ),
                 fit: BoxFit.cover,
               ),
             ),
@@ -35,6 +35,7 @@ class GetStartedPage extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
+                  // ignore: lines_longer_than_80_chars
                   'Explore new world with us and let yourself get an amazing experiences',
                   style: whiteTextStyle.copyWith(
                     fontSize: 16,

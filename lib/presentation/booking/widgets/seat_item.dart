@@ -43,7 +43,7 @@ class SeatItem extends StatelessWidget {
         case ESeatStatus.selected:
           return Center(
             child: Text(
-              "You",
+              'You',
               style: whiteTextStyle.copyWith(
                 fontWeight: semiBold,
               ),

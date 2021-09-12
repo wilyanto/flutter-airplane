@@ -124,7 +124,7 @@ class SelectSeatPage extends StatelessWidget {
                   const SeatItem(
                     status: ESeatStatus.unavailable,
                   ),
-                  labelOnly(label: "1"),
+                  labelOnly(label: '1'),
                   const SeatItem(
                     status: ESeatStatus.available,
                   ),
@@ -147,7 +147,7 @@ class SelectSeatPage extends StatelessWidget {
                   const SeatItem(
                     status: ESeatStatus.available,
                   ),
-                  labelOnly(label: "2"),
+                  labelOnly(label: '2'),
                   const SeatItem(
                     status: ESeatStatus.available,
                   ),
@@ -170,7 +170,7 @@ class SelectSeatPage extends StatelessWidget {
                   const SeatItem(
                     status: ESeatStatus.selected,
                   ),
-                  labelOnly(label: "3"),
+                  labelOnly(label: '3'),
                   const SeatItem(
                     status: ESeatStatus.available,
                   ),
@@ -193,7 +193,7 @@ class SelectSeatPage extends StatelessWidget {
                   const SeatItem(
                     status: ESeatStatus.unavailable,
                   ),
-                  labelOnly(label: "4"),
+                  labelOnly(label: '4'),
                   const SeatItem(
                     status: ESeatStatus.available,
                   ),
@@ -216,7 +216,7 @@ class SelectSeatPage extends StatelessWidget {
                   const SeatItem(
                     status: ESeatStatus.available,
                   ),
-                  labelOnly(label: "5"),
+                  labelOnly(label: '5'),
                   const SeatItem(
                     status: ESeatStatus.unavailable,
                   ),

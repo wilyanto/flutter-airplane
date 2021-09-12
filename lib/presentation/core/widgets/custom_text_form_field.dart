@@ -2,16 +2,16 @@ import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  final String title;
-  final String hintText;
-  final bool isObscureText;
-
   const CustomTextFormField({
     Key? key,
     required this.title,
     required this.hintText,
     this.isObscureText = false,
   }) : super(key: key);
+
+  final String title;
+  final String hintText;
+  final bool isObscureText;
 
   @override
   Widget build(BuildContext context) {

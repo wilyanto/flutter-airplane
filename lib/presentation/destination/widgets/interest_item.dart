@@ -2,15 +2,18 @@ import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 class InterestItem extends StatelessWidget {
-  final String interest;
+  const InterestItem({
+    Key? key,
+    required this.interest,
+  }) : super(key: key);
 
-  const InterestItem({Key? key, required this.interest}) : super(key: key);
+  final String interest;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Row(
-        children: [
+        children: <Widget>[
           Container(
             width: 16,
             height: 16,

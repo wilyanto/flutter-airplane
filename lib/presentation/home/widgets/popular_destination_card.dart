@@ -3,11 +3,6 @@ import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 class PopularDestinationCard extends StatelessWidget {
-  final String name;
-  final String city;
-  final String filename;
-  final double rating;
-
   const PopularDestinationCard({
     Key? key,
     required this.name,
@@ -15,6 +10,11 @@ class PopularDestinationCard extends StatelessWidget {
     required this.filename,
     this.rating = 0.0,
   }) : super(key: key);
+
+  final String name;
+  final String city;
+  final String filename;
+  final double rating;
 
   @override
   Widget build(BuildContext context) {

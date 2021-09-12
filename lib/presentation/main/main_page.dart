@@ -1,12 +1,30 @@
+import 'package:airplane/cubit/page_cubit.dart';
 import 'package:airplane/presentation/home/home_page.dart';
+import 'package:airplane/presentation/main/setting_page.dart';
 import 'package:airplane/presentation/main/widgets/custom_bottom_navigation_item.dart';
+import 'package:airplane/presentation/transaction/transaction_page.dart';
+import 'package:airplane/presentation/wallet/wallet_page.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainPage extends StatelessWidget {
   static const routeName = 'main-page';
 
-  Widget buildContent() => HomePage();
+  Widget buildContent(int pageIndex) {
+    switch (pageIndex) {
+      case 0:
+        return HomePage();
+      case 1:
+        return TransactionPage();
+      case 2:
+        return WalletPage();
+      case 3:
+        return SettingPage();
+      default:
+        return HomePage();
+    }
+  }
 
   Widget customBottomNavigation() => Align(
         alignment: Alignment.bottomCenter,
@@ -20,18 +38,26 @@ class MainPage extends StatelessWidget {
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const <Widget>[
+            // ignore: prefer_const_literals_to_create_immutables
+            children: <Widget>[
+              // ignore: prefer_const_constructors
               CustomBottomNavigationItem(
+                pageIndex: 0,
                 filename: 'icon_home',
-                isSelected: true,
               ),
+              // ignore: prefer_const_constructors
               CustomBottomNavigationItem(
+                pageIndex: 1,
                 filename: 'icon_booking',
               ),
+              // ignore: prefer_const_constructors
               CustomBottomNavigationItem(
+                pageIndex: 2,
                 filename: 'icon_card',
               ),
+              // ignore: prefer_const_constructors
               CustomBottomNavigationItem(
+                pageIndex: 3,
                 filename: 'icon_settings',
               ),
             ],
@@ -43,11 +69,15 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackgroundColor,
-      body: Stack(
-        children: [
-          buildContent(),
-          customBottomNavigation(),
-        ],
+      body: BlocBuilder<PageCubit, int>(
+        builder: (context, pageIndex) {
+          return Stack(
+            children: [
+              buildContent(pageIndex),
+              customBottomNavigation(),
+            ],
+          );
+        },
       ),
     );
   }
