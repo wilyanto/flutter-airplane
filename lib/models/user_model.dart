@@ -21,7 +21,7 @@ class UserModel extends Equatable {
         'name': name,
         'email': email,
         'hobby': hobby,
-        'balanace': balance,
+        'balance': balance,
       };
 
   final String id;

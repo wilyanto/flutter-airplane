@@ -5,6 +5,7 @@ import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/core/widgets/custom_text_form_field.dart';
 import 'package:airplane/presentation/core/widgets/snack_bar.dart';
 import 'package:airplane/presentation/core/widgets/tac.dart';
+import 'package:airplane/presentation/main/main_page.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,7 +47,7 @@ class SignInPage extends StatelessWidget {
             listener: (context, state) {
               if (state is AuthSuccess) {
                 Navigator.pushNamedAndRemoveUntil(
-                    context, BonusPage.routeName, (route) => false);
+                    context, MainPage.routeName, (route) => false);
               } else if (state is AuthFailed) {
                 CustomSnackBar().show(descrption: state.error);
               }
@@ -60,11 +61,10 @@ class SignInPage extends StatelessWidget {
 
               return CtaButton(
                 title: 'Sign In',
-                onPressed: () {},
-                // onPressed: () => context.read<AuthCubit>().sign(
-                //       email: emailC.text,
-                //       password: passwordC.text,
-                //     ),
+                onPressed: () => context.read<AuthCubit>().signIn(
+                      email: emailC.text,
+                      password: passwordC.text,
+                    ),
               );
             },
           );
@@ -91,7 +91,7 @@ class SignInPage extends StatelessWidget {
 
     Widget signUpButton() => GestureDetector(
           onTap: () {
-            Navigator.pop(context);
+            Navigator.popAndPushNamed(context, SignUpPage.routeName);
           },
           child: Container(
             alignment: Alignment.center,
