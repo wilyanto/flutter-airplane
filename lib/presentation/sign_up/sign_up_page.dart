@@ -1,9 +1,12 @@
+import 'package:airplane/cubit/auth/auth_cubit.dart';
 import 'package:airplane/presentation/bonus/bonus_page.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/core/widgets/custom_text_form_field.dart';
+import 'package:airplane/presentation/core/widgets/snack_bar.dart';
 import 'package:airplane/presentation/core/widgets/tac.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 // ignore: must_be_immutable
 class SignUpPage extends StatelessWidget {
@@ -53,9 +56,32 @@ class SignUpPage extends StatelessWidget {
             controller: hobbyC,
           );
 
-      Widget submitButton() => CtaButton(
-            title: 'Get Started',
-            onPressed: () => Navigator.pushNamed(context, BonusPage.routeName),
+      Widget submitButton() => BlocConsumer<AuthCubit, AuthState>(
+            listener: (context, state) {
+              if (state is AuthSuccess) {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, BonusPage.routeName, (route) => false);
+              } else if (state is AuthFailed) {
+                CustomSnackBar().show(title: 'Error', descrption: state.error);
+              }
+            },
+            builder: (context, state) {
+              if (state is AuthLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+
+              return CtaButton(
+                title: 'Get Started',
+                onPressed: () => context.read<AuthCubit>().signUp(
+                      email: emailC.text,
+                      password: passwordC.text,
+                      name: nameC.text,
+                      hobby: hobbyC.text,
+                    ),
+              );
+            },
           );
 
       return Container(
