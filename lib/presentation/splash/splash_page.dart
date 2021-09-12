@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:airplane/cubit/auth/auth_cubit.dart';
 import 'package:airplane/presentation/get_started/get_started.dart';
 import 'package:airplane/presentation/main/main_page.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SplashPage extends StatefulWidget {
   static const routeName = '/';
@@ -22,6 +24,7 @@ class _SplashPageState extends State<SplashPage> {
         Navigator.pushNamedAndRemoveUntil(
             context, GetStartedPage.routeName, (route) => false);
       } else {
+        context.read<AuthCubit>().getCurrentUser(user.uid);
         Navigator.pushNamedAndRemoveUntil(
             context, MainPage.routeName, (route) => false);
       }
