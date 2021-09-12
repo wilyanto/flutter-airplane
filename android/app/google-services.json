@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "573338334041",
+    "project_id": "airplane-6a64f",
+    "storage_bucket": "airplane-6a64f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573338334041:android:653f0a74a227fd9d115248",
+        "android_client_info": {
+          "package_name": "com.wilyanto.airplane"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573338334041-mdom2ak8qgmpj9c2er8rd57r6b31n7dg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2GtzfgoIpeIJ6Hevb7Dkc9mpmQ7X3bro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573338334041-mdom2ak8qgmpj9c2er8rd57r6b31n7dg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "573338334041-h1hghrlb3huk4bn931i8efciah0k9l7t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wilyanto.airplane"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

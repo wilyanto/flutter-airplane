@@ -1,4 +1,4 @@
-import 'package:airplane/cubit/page_cubit.dart';
+import 'package:airplane/cubit/bottom_navigation/page_cubit.dart';
 import 'package:airplane/presentation/home/home_page.dart';
 import 'package:airplane/presentation/main/setting_page.dart';
 import 'package:airplane/presentation/main/widgets/custom_bottom_navigation_item.dart';

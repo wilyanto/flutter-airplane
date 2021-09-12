@@ -1,4 +1,4 @@
-import 'package:airplane/cubit/page_cubit.dart';
+import 'package:airplane/cubit/bottom_navigation/page_cubit.dart';
 import 'package:airplane/presentation/booking/select_seat_page.dart';
 import 'package:airplane/presentation/checkout/checkout_page.dart';
 import 'package:airplane/presentation/checkout/success/sucess_checkout_page.dart';
@@ -6,13 +6,17 @@ import 'package:airplane/presentation/destination/destination_detail_page.dart';
 import 'package:airplane/presentation/get_started/get_started.dart';
 import 'package:airplane/presentation/main/main_page.dart';
 import 'package:airplane/presentation/sign_up/sign_up_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'presentation/bonus/bonus_page.dart';
 import 'presentation/splash/splash_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
