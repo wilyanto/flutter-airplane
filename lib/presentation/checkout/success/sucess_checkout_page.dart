@@ -1,10 +1,10 @@
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
-import 'package:airplane/presentation/main/main_page.dart';
+import 'package:airplane/presentation/routers/routers.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SuccessCheckoutPage extends StatelessWidget {
-  static const routeName = '/success-checkout';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,11 +44,7 @@ class SuccessCheckoutPage extends StatelessWidget {
               margin: const EdgeInsets.only(top: 50),
               title: 'My Bookings',
               onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  MainPage.routeName,
-                  (route) => false,
-                );
+                Get.offAllNamed(Routers.main);
               },
             )
           ],

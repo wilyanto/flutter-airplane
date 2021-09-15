@@ -1,12 +1,12 @@
-import 'package:airplane/presentation/checkout/success/sucess_checkout_page.dart';
 import 'package:airplane/presentation/checkout/widgets/booking_detail_item.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/core/widgets/tac.dart';
+import 'package:airplane/presentation/routers/routers.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CheckoutPage extends StatelessWidget {
-  static const routeName = '/checkout';
   @override
   Widget build(BuildContext context) {
     Widget route() => Container(
@@ -284,7 +284,7 @@ class CheckoutPage extends StatelessWidget {
           margin: const EdgeInsets.only(top: 30),
           title: 'Pay Now',
           onPressed: () {
-            Navigator.pushNamed(context, SuccessCheckoutPage.routeName);
+            Get.toNamed(Routers.checkoutSuccess);
           },
         );
 

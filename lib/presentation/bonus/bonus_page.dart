@@ -1,11 +1,11 @@
 import 'package:airplane/cubit/auth/auth_cubit.dart';
-import 'package:airplane/presentation/main/main_page.dart';
+import 'package:airplane/presentation/routers/routers.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class BonusPage extends StatelessWidget {
-  static const routeName = 'bonus';
   @override
   Widget build(BuildContext context) {
     Widget bonusCard() {
@@ -126,8 +126,7 @@ class BonusPage extends StatelessWidget {
           width: 220,
           child: TextButton(
             onPressed: () {
-              Navigator.pushNamedAndRemoveUntil(
-                  context, MainPage.routeName, (route) => false);
+              Get.offAllNamed(Routers.main);
             },
             style: TextButton.styleFrom(
               backgroundColor: kPrimaryColor,

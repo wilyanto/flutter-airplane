@@ -1,7 +1,8 @@
 import 'package:airplane/models/destination_model.dart';
-import 'package:airplane/presentation/destination/destination_detail_page.dart';
+import 'package:airplane/presentation/routers/routers.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PopularDestinationCard extends StatelessWidget {
   const PopularDestinationCard({
@@ -14,8 +15,7 @@ class PopularDestinationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () =>
-          Navigator.pushNamed(context, DestinationDetailPage.routeName),
+      onTap: () => Get.toNamed(Routers.destinationDetail),
       child: Row(
         children: [
           Container(

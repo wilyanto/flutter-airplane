@@ -1,10 +1,10 @@
-import 'package:airplane/presentation/auth/sign_up/sign_up_page.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
+import 'package:airplane/presentation/routers/routers.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class GetStartedPage extends StatelessWidget {
-  static const routeName = '/get-started';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,8 +47,7 @@ class GetStartedPage extends StatelessWidget {
                   title: 'Get Started',
                   width: 220,
                   margin: const EdgeInsets.only(top: 50, bottom: 80),
-                  onPressed: () =>
-                      Navigator.pushNamed(context, SignUpPage.routeName),
+                  onPressed: () => Get.toNamed(Routers.signUp),
                 ),
               ],
             ),

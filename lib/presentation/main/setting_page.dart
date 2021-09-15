@@ -1,10 +1,11 @@
 import 'package:airplane/cubit/auth/auth_cubit.dart';
 import 'package:airplane/cubit/bottom_navigation/page_cubit.dart';
-import 'package:airplane/presentation/auth/sign_in/sign_in_page.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/core/widgets/snack_bar.dart';
+import 'package:airplane/presentation/routers/routers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class SettingPage extends StatelessWidget {
   @override
@@ -15,8 +16,7 @@ class SettingPage extends StatelessWidget {
           CustomSnackBar().show(descrption: state.error);
         } else if (state is AuthInitial) {
           context.read<PageCubit>().setSelectedPageIndex(0);
-          Navigator.pushNamedAndRemoveUntil(
-              context, SignInPage.routeName, (route) => false);
+          Get.offAllNamed(Routers.signIn);
         }
       },
       builder: (context, state) {

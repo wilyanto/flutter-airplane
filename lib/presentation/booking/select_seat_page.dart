@@ -1,13 +1,12 @@
 import 'package:airplane/presentation/booking/enums/e_seat_status.dart';
 import 'package:airplane/presentation/booking/widgets/seat_item.dart';
-import 'package:airplane/presentation/checkout/checkout_page.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
+import 'package:airplane/presentation/routers/routers.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SelectSeatPage extends StatelessWidget {
-  static const routeName = 'select-seat';
-
   @override
   Widget build(BuildContext context) {
     Widget title() => Container(
@@ -281,7 +280,7 @@ class SelectSeatPage extends StatelessWidget {
           margin: const EdgeInsets.only(top: 30, bottom: 46),
           title: 'Continue to Checkout',
           onPressed: () {
-            Navigator.pushNamed(context, CheckoutPage.routeName);
+            Get.toNamed(Routers.checkout);
           },
         );
 

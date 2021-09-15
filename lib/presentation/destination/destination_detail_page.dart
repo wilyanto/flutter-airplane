@@ -1,21 +1,24 @@
-import 'package:airplane/presentation/booking/select_seat_page.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/destination/widgets/interest_item.dart';
 import 'package:airplane/presentation/destination/widgets/photo_item.dart';
+import 'package:airplane/presentation/routers/routers.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DestinationDetailPage extends StatelessWidget {
-  static const routeName = 'destination-detail';
   @override
   Widget build(BuildContext context) {
+    // final destinationModel =
+    //     ModalRoute.of(context)!.settings.arguments as DestinationModel?;
+
     Widget backgroundImage() => Container(
           width: double.infinity,
           height: 450,
           decoration: const BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: AssetImage('assets/image_destination1.png'),
+              image: NetworkImage('destinationModel?.imageUrl'),
             ),
           ),
         );
@@ -240,7 +243,7 @@ class DestinationDetailPage extends StatelessWidget {
                     CtaButton(
                       title: 'Book Now',
                       onPressed: () {
-                        Navigator.pushNamed(context, SelectSeatPage.routeName);
+                        Get.toNamed(Routers.selectSeat);
                       },
                       width: 170,
                     ),

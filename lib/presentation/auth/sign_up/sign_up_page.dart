@@ -1,16 +1,14 @@
 import 'package:airplane/cubit/auth/auth_cubit.dart';
-import 'package:airplane/presentation/auth/sign_in/sign_in_page.dart';
-import 'package:airplane/presentation/bonus/bonus_page.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/core/widgets/custom_text_form_field.dart';
 import 'package:airplane/presentation/core/widgets/snack_bar.dart';
+import 'package:airplane/presentation/routers/routers.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class SignUpPage extends StatelessWidget {
-  static const routeName = 'sign-up';
-
   final TextEditingController nameC = TextEditingController();
   final TextEditingController emailC = TextEditingController();
   final TextEditingController passwordC = TextEditingController();
@@ -58,8 +56,7 @@ class SignUpPage extends StatelessWidget {
       Widget submitButton() => BlocConsumer<AuthCubit, AuthState>(
             listener: (context, state) {
               if (state is AuthSuccess) {
-                Navigator.pushNamedAndRemoveUntil(
-                    context, BonusPage.routeName, (route) => false);
+                Get.offAllNamed(Routers.bonus);
               } else if (state is AuthFailed) {
                 CustomSnackBar().show(descrption: state.error);
               }
@@ -107,7 +104,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget signInButton() => GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, SignInPage.routeName);
+            Get.toNamed(Routers.signIn);
           },
           child: Container(
             alignment: Alignment.center,
