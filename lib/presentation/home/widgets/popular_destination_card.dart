@@ -15,7 +15,10 @@ class PopularDestinationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(Routers.destinationDetail),
+      onTap: () => Get.toNamed(
+        Routers.destinationDetail,
+        arguments: destinationModel,
+      ),
       child: Row(
         children: [
           Container(

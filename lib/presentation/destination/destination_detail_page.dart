@@ -1,3 +1,4 @@
+import 'package:airplane/models/destination_model.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/destination/widgets/interest_item.dart';
 import 'package:airplane/presentation/destination/widgets/photo_item.dart';
@@ -5,20 +6,25 @@ import 'package:airplane/presentation/routers/routers.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class DestinationDetailPage extends StatelessWidget {
+  const DestinationDetailPage({
+    Key? key,
+    required this.destinationModel,
+  }) : super(key: key);
+
+  final DestinationModel destinationModel;
+
   @override
   Widget build(BuildContext context) {
-    // final destinationModel =
-    //     ModalRoute.of(context)!.settings.arguments as DestinationModel?;
-
     Widget backgroundImage() => Container(
           width: double.infinity,
           height: 450,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: NetworkImage('destinationModel?.imageUrl'),
+              image: NetworkImage(destinationModel.imageUrl),
             ),
           ),
         );
@@ -68,7 +74,7 @@ class DestinationDetailPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Lake Ciliwung',
+                            destinationModel.name,
                             style: whiteTextStyle.copyWith(
                               fontSize: 24,
                               fontWeight: semiBold,
@@ -76,7 +82,7 @@ class DestinationDetailPage extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            'Tangerang',
+                            destinationModel.city,
                             style: whiteTextStyle.copyWith(
                               fontSize: 16,
                               fontWeight: light,
@@ -99,7 +105,7 @@ class DestinationDetailPage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '4.8',
+                          destinationModel.rating.toString(),
                           style: whiteTextStyle.copyWith(
                             fontWeight: medium,
                           ),
@@ -222,7 +228,12 @@ class DestinationDetailPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'IDR 2.500.000',
+                            NumberFormat.currency(
+                              locale: 'id',
+                              symbol: 'IDR ',
+                              decimalDigits: 0,
+                            ).format(destinationModel.price),
+                            // 'IDR ${destinationModel.price}',
                             style: blackTextStyle.copyWith(
                               fontSize: 18,
                               fontWeight: medium,

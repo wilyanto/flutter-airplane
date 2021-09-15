@@ -87,7 +87,7 @@ class HomePage extends HookWidget {
     );
   }
 
-  Widget newDestination() => Container(
+  Widget newDestination(List<DestinationModel> destinations) => Container(
         margin: EdgeInsets.only(
           top: 30,
           left: defaultMargin,
@@ -104,35 +104,12 @@ class HomePage extends HookWidget {
                 fontWeight: semiBold,
               ),
             ),
-            const DestinationTile(
-              name: 'Danau Beratan',
-              city: 'Singajara',
-              filename: 'image_destination6',
-              rating: 4.5,
-            ),
-            const DestinationTile(
-              name: 'Sydney Opera',
-              city: 'Australlia',
-              filename: 'image_destination7',
-              rating: 4.7,
-            ),
-            const DestinationTile(
-              name: 'Roma',
-              city: 'Italy',
-              filename: 'image_destination8',
-              rating: 4.8,
-            ),
-            const DestinationTile(
-              name: 'Payung Teduh',
-              city: 'Singapore',
-              filename: 'image_destination9',
-              rating: 4.5,
-            ),
-            const DestinationTile(
-              name: 'Hill Hey',
-              city: 'Monaco',
-              filename: 'image_destination10',
-              rating: 4.7,
+            Column(
+              children: destinations
+                  .map((DestinationModel destination) => DestinationTile(
+                        destinationModel: destination,
+                      ))
+                  .toList(),
             ),
           ],
         ),
@@ -156,7 +133,7 @@ class HomePage extends HookWidget {
             children: [
               header(),
               popularDestination(state.destinations),
-              newDestination(),
+              newDestination(state.destinations),
             ],
           );
         }
