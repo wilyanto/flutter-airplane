@@ -1,4 +1,3 @@
-import 'package:airplane/cubit/auth/auth_cubit.dart';
 import 'package:airplane/cubit/bottom_navigation/page_cubit.dart';
 import 'package:airplane/cubit/transaction/transaction_cubit.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';

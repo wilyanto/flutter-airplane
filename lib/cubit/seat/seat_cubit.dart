@@ -12,6 +12,8 @@ class SeatCubit extends Cubit<List<String>> {
     emit(List.from(state));
   }
 
+  void resetSelectedSeat() => emit([]);
+
   bool isSelected(String id) {
     final index = state.indexOf(id);
     if (index == -1) return false;

@@ -1,4 +1,5 @@
 import 'package:airplane/cubit/auth/auth_cubit.dart';
+import 'package:airplane/cubit/seat/seat_cubit.dart';
 import 'package:airplane/cubit/transaction/transaction_cubit.dart';
 import 'package:airplane/models/transaction_model.dart';
 import 'package:airplane/presentation/core/utils.dart';
@@ -203,6 +204,7 @@ class CheckoutPage extends StatelessWidget {
             title: 'Pay Now',
             onPressed: () {
               context.read<TransactionCubit>().createTransaction(transaction);
+              context.read<SeatCubit>().resetSelectedSeat();
             },
           );
         },
