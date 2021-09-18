@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 
 class TransactionModel extends Equatable {
   const TransactionModel({
+    this.id = '',
     required this.destination,
     this.amountOfTraveler = 0,
     this.selectedSeats = '',
@@ -13,11 +14,20 @@ class TransactionModel extends Equatable {
     this.grandTotal = 0,
   });
 
-  factory TransactionModel.fromJson(Map<String, dynamic> json) =>
+  factory TransactionModel.fromJson(String id, Map<String, dynamic> json) =>
       TransactionModel(
+        id: id,
         destination: DestinationModel.fromJson(
-            json['destination']['id'] as String,
-            json['destination'] as Map<String, dynamic>),
+          json['destination']['id'] as String,
+          json['destination'] as Map<String, dynamic>,
+        ),
+        amountOfTraveler: json['amount_of_travelers'] as int,
+        selectedSeats: json['selected_seat'] as String,
+        isInsurance: json['is_insurance'] as bool,
+        isRefundable: json['is_refundable'] as bool,
+        vat: json['vat'] as double,
+        price: json['price'] as int,
+        grandTotal: json['grand_total'] as int,
       );
 
   Map<String, dynamic> toJson() => {
@@ -31,6 +41,7 @@ class TransactionModel extends Equatable {
         'grand_total': grandTotal,
       };
 
+  final String id;
   final DestinationModel destination;
   final int amountOfTraveler;
   final String selectedSeats;

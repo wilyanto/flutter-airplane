@@ -20,4 +20,11 @@ class TransactionFailed extends TransactionState {
   List<Object> get props => [];
 }
 
-class TransactionSuccess extends TransactionState {}
+class TransactionSuccess extends TransactionState {
+  const TransactionSuccess(this.transactions);
+
+  final List<TransactionModel> transactions;
+
+  @override
+  List<Object> get props => [];
+}

@@ -7,14 +7,13 @@ class DestinationService {
       .withConverter<DestinationModel>(
         fromFirestore: (snapshot, _) =>
             DestinationModel.fromJson(snapshot.id, snapshot.data()!),
-        toFirestore: (destination, _) => {},
+        toFirestore: (destination, _) => destination.toJson(),
       );
 
   Future<List<DestinationModel>> fetchDestinations() async {
     try {
       final querySnapshot = await _destinationRef.get();
-      final result = querySnapshot.docs.map((e) => e.data()).toList();
-      return result;
+      return querySnapshot.docs.map((e) => e.data()).toList();
     } catch (e) {
       rethrow;
     }
