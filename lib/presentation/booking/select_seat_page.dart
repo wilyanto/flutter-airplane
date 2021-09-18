@@ -1,5 +1,6 @@
 import 'package:airplane/cubit/seat/seat_cubit.dart';
 import 'package:airplane/models/destination_model.dart';
+import 'package:airplane/models/transaction.dart';
 import 'package:airplane/presentation/booking/enums/e_seat_status.dart';
 import 'package:airplane/presentation/booking/widgets/seat_item.dart';
 import 'package:airplane/presentation/core/utils.dart';
@@ -321,13 +322,31 @@ class SelectSeatPage extends StatelessWidget {
       );
     }
 
-    Widget checkoutButton() => CtaButton(
-          margin: const EdgeInsets.only(top: 30, bottom: 46),
-          title: 'Continue to Checkout',
-          onPressed: () {
-            Get.toNamed(Routers.checkout);
-          },
-        );
+    Widget checkoutButton() {
+      return BlocBuilder<SeatCubit, List<String>>(
+        builder: (context, state) {
+          return CtaButton(
+            margin: const EdgeInsets.only(top: 30, bottom: 46),
+            title: 'Continue to Checkout',
+            onPressed: () {
+              final _price = destination.price * state.length;
+              Get.toNamed(
+                Routers.checkout,
+                arguments: TransactionModel(
+                  destination: destination,
+                  amountOfTraveler: state.length,
+                  selectedSeats: state.join(', '),
+                  isInsurance: true,
+                  price: _price,
+                  vat: 0.45,
+                  grandTotal: _price + (_price * 0.45).toInt(),
+                ),
+              );
+            },
+          );
+        },
+      );
+    }
 
     return Scaffold(
       backgroundColor: kBackgroundColor,

@@ -18,6 +18,7 @@ class BookingDetailItem extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 16),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: 16,
@@ -34,11 +35,14 @@ class BookingDetailItem extends StatelessWidget {
             style: blackTextStyle,
           ),
           const Spacer(),
-          Text(
-            valueText,
-            style: blackTextStyle.copyWith(
-              fontWeight: semiBold,
-              color: valueColor,
+          Expanded(
+            child: Text(
+              valueText,
+              textAlign: TextAlign.end,
+              style: blackTextStyle.copyWith(
+                fontWeight: semiBold,
+                color: valueColor,
+              ),
             ),
           ),
         ],

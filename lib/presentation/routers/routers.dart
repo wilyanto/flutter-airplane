@@ -1,4 +1,5 @@
 import 'package:airplane/models/destination_model.dart';
+import 'package:airplane/models/transaction.dart';
 import 'package:airplane/presentation/auth/sign_in/sign_in_page.dart';
 import 'package:airplane/presentation/auth/sign_up/sign_up_page.dart';
 import 'package:airplane/presentation/bonus/bonus_page.dart';
@@ -65,7 +66,9 @@ class Routers {
     ),
     GetPage(
       name: Routers.checkout,
-      page: () => CheckoutPage(),
+      page: () => CheckoutPage(
+        transaction: Get.arguments as TransactionModel,
+      ),
     ),
     GetPage(
       name: Routers.checkoutSuccess,
