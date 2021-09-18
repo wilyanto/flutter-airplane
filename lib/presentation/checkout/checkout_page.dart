@@ -1,8 +1,10 @@
 import 'package:airplane/cubit/auth/auth_cubit.dart';
-import 'package:airplane/models/transaction.dart';
+import 'package:airplane/cubit/transaction/transaction_cubit.dart';
+import 'package:airplane/models/transaction_model.dart';
 import 'package:airplane/presentation/checkout/widgets/booking_detail_item.dart';
 import 'package:airplane/presentation/core/utils.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
+import 'package:airplane/presentation/core/widgets/snack_bar.dart';
 import 'package:airplane/presentation/core/widgets/tac.dart';
 import 'package:airplane/presentation/routers/routers.dart';
 import 'package:airplane/shared/theme.dart';
@@ -301,13 +303,34 @@ class CheckoutPage extends StatelessWidget {
       );
     }
 
-    Widget payNowButton() => CtaButton(
-          margin: const EdgeInsets.only(top: 30),
-          title: 'Pay Now',
-          onPressed: () {
-            Get.toNamed(Routers.checkoutSuccess);
-          },
-        );
+    Widget payNowButton() {
+      return BlocConsumer<TransactionCubit, TransactionState>(
+        listener: (context, state) {
+          if (state is TransactionSuccess) {
+            Get.offAllNamed(Routers.checkoutSuccess);
+          } else if (state is TransactionFailed) {
+            CustomSnackBar().show(descrption: state.error);
+          }
+        },
+        builder: (context, state) {
+          if (state is TransactionLoading) {
+            return Container(
+              margin: const EdgeInsets.only(top: 30),
+              child: const Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+          return CtaButton(
+            margin: const EdgeInsets.only(top: 30),
+            title: 'Pay Now',
+            onPressed: () {
+              context.read<TransactionCubit>().createTransaction(transaction);
+            },
+          );
+        },
+      );
+    }
 
     return Scaffold(
       backgroundColor: kBackgroundColor,

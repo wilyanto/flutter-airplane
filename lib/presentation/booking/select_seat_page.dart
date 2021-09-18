@@ -1,6 +1,6 @@
 import 'package:airplane/cubit/seat/seat_cubit.dart';
 import 'package:airplane/models/destination_model.dart';
-import 'package:airplane/models/transaction.dart';
+import 'package:airplane/models/transaction_model.dart';
 import 'package:airplane/presentation/booking/enums/e_seat_status.dart';
 import 'package:airplane/presentation/booking/widgets/seat_item.dart';
 import 'package:airplane/presentation/core/utils.dart';

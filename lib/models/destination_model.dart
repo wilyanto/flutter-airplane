@@ -20,6 +20,15 @@ class DestinationModel extends Equatable {
         price: json['price'] as int,
       );
 
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'city': city,
+        'image_url': imageUrl,
+        'rating': rating,
+        'price': price,
+      };
+
   final String id;
   final String name;
   final String city;

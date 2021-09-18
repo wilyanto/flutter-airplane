@@ -2,6 +2,7 @@ import 'package:airplane/cubit/auth/auth_cubit.dart';
 import 'package:airplane/cubit/bottom_navigation/page_cubit.dart';
 import 'package:airplane/cubit/destination/destination_cubit.dart';
 import 'package:airplane/cubit/seat/seat_cubit.dart';
+import 'package:airplane/cubit/transaction/transaction_cubit.dart';
 import 'package:airplane/presentation/routers/routers.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (BuildContext context) => SeatCubit(),
+        ),
+        BlocProvider(
+          create: (BuildContext context) => TransactionCubit(),
         ),
       ],
       child: GetMaterialApp(

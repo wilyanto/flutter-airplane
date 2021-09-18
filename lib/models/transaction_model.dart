@@ -13,6 +13,24 @@ class TransactionModel extends Equatable {
     this.grandTotal = 0,
   });
 
+  factory TransactionModel.fromJson(Map<String, dynamic> json) =>
+      TransactionModel(
+        destination: DestinationModel.fromJson(
+            json['destination']['id'] as String,
+            json['destination'] as Map<String, dynamic>),
+      );
+
+  Map<String, dynamic> toJson() => {
+        'destination': destination.toJson(),
+        'amount_of_travelers': amountOfTraveler,
+        'selected_seat': selectedSeats,
+        'is_insurance': isInsurance,
+        'is_refundable': isRefundable,
+        'vat': vat,
+        'price': price,
+        'grand_total': grandTotal,
+      };
+
   final DestinationModel destination;
   final int amountOfTraveler;
   final String selectedSeats;

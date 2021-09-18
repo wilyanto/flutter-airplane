@@ -11,7 +11,7 @@ class UserService {
 
   Future<void> setUser(UserModel user) async {
     try {
-      _userReference.doc(user.id).set(user);
+      await _userReference.doc(user.id).set(user);
     } catch (e) {
       rethrow;
     }
