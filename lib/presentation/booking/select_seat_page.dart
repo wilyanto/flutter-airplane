@@ -118,16 +118,20 @@ class SelectSeatPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   const SeatItem(
+                    seatId: 'A1',
                     status: ESeatStatus.unavailable,
                   ),
                   const SeatItem(
+                    seatId: 'B1',
                     status: ESeatStatus.unavailable,
                   ),
                   labelOnly(label: '1'),
                   const SeatItem(
+                    seatId: 'C1',
                     status: ESeatStatus.available,
                   ),
                   const SeatItem(
+                    seatId: 'D1',
                     status: ESeatStatus.unavailable,
                   ),
                 ],
@@ -141,16 +145,20 @@ class SelectSeatPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   const SeatItem(
+                    seatId: 'A2',
                     status: ESeatStatus.available,
                   ),
                   const SeatItem(
+                    seatId: 'B2',
                     status: ESeatStatus.available,
                   ),
                   labelOnly(label: '2'),
                   const SeatItem(
+                    seatId: 'C2',
                     status: ESeatStatus.available,
                   ),
                   const SeatItem(
+                    seatId: 'D2',
                     status: ESeatStatus.unavailable,
                   ),
                 ],
@@ -164,16 +172,20 @@ class SelectSeatPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   const SeatItem(
+                    seatId: 'A3',
                     status: ESeatStatus.selected,
                   ),
                   const SeatItem(
+                    seatId: 'B3',
                     status: ESeatStatus.selected,
                   ),
                   labelOnly(label: '3'),
                   const SeatItem(
+                    seatId: 'C3',
                     status: ESeatStatus.available,
                   ),
                   const SeatItem(
+                    seatId: 'D3',
                     status: ESeatStatus.available,
                   ),
                 ],
@@ -187,16 +199,20 @@ class SelectSeatPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   const SeatItem(
+                    seatId: 'A4',
                     status: ESeatStatus.available,
                   ),
                   const SeatItem(
+                    seatId: 'B4',
                     status: ESeatStatus.unavailable,
                   ),
                   labelOnly(label: '4'),
                   const SeatItem(
+                    seatId: 'C4',
                     status: ESeatStatus.available,
                   ),
                   const SeatItem(
+                    seatId: 'D4',
                     status: ESeatStatus.available,
                   ),
                 ],
@@ -210,16 +226,20 @@ class SelectSeatPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   const SeatItem(
+                    seatId: 'A5',
                     status: ESeatStatus.available,
                   ),
                   const SeatItem(
+                    seatId: 'B5',
                     status: ESeatStatus.available,
                   ),
                   labelOnly(label: '5'),
                   const SeatItem(
+                    seatId: 'C5',
                     status: ESeatStatus.unavailable,
                   ),
                   const SeatItem(
+                    seatId: 'D5',
                     status: ESeatStatus.available,
                   ),
                 ],
