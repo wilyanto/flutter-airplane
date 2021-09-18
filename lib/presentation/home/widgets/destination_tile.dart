@@ -15,7 +15,7 @@ class DestinationTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.offAllNamed(
+      onTap: () => Get.toNamed(
         Routers.destinationDetail,
         arguments: destinationModel,
       ),

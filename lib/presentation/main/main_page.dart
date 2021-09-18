@@ -33,6 +33,14 @@ class MainPage extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(defaultRadius),
             color: kWhiteColor,
+            boxShadow: [
+              BoxShadow(
+                color: kGreyColor.withOpacity(0.5),
+                blurRadius: 3,
+                spreadRadius: 1,
+                offset: const Offset(0, 3), // Shadow position
+              ),
+            ],
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
