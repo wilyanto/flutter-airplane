@@ -1,8 +1,9 @@
 import 'package:airplane/models/destination_model.dart';
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class TransactionModel extends Equatable {
-  const TransactionModel({
+  TransactionModel({
     this.id = '',
     required this.destination,
     this.amountOfTraveler = 0,
@@ -12,6 +13,7 @@ class TransactionModel extends Equatable {
     this.vat = 0,
     this.price = 0,
     this.grandTotal = 0,
+    this.createdAt,
   });
 
   factory TransactionModel.fromJson(String id, Map<String, dynamic> json) =>
@@ -28,6 +30,10 @@ class TransactionModel extends Equatable {
         vat: json['vat'] as double,
         price: json['price'] as int,
         grandTotal: json['grand_total'] as int,
+        createdAt: json['created_at'] == null
+            ? null
+            : DateTime.fromMillisecondsSinceEpoch(
+                json['created_at'].millisecondsSinceEpoch as int),
       );
 
   Map<String, dynamic> toJson() => {
@@ -39,6 +45,7 @@ class TransactionModel extends Equatable {
         'vat': vat,
         'price': price,
         'grand_total': grandTotal,
+        'created_at': createdAt,
       };
 
   final String id;
@@ -50,6 +57,7 @@ class TransactionModel extends Equatable {
   final double vat;
   final int price;
   final int grandTotal;
+  DateTime? createdAt;
 
   @override
   List<Object?> get props => [

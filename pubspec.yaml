@@ -33,6 +33,7 @@ dependencies:
   get: ^4.3.8
   google_fonts: ^2.1.0
   intl: ^0.17.0
+  lottie: ^1.1.0
 
 dev_dependencies:
   change_app_package_name: ^1.0.0
@@ -76,4 +77,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-

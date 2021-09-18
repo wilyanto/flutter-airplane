@@ -12,6 +12,7 @@ class TransactionService {
 
   Future<void> createTransaction(TransactionModel transaction) async {
     try {
+      transaction.createdAt = DateTime.now();
       await _transactionRef.add(transaction);
     } catch (e) {
       rethrow;
@@ -20,7 +21,8 @@ class TransactionService {
 
   Future<List<TransactionModel>> fetchTransactions() async {
     try {
-      final querySnapshot = await _transactionRef.get();
+      final querySnapshot =
+          await _transactionRef.orderBy('created_at', descending: true).get();
       return querySnapshot.docs.map((e) => e.data()).toList();
     } catch (e) {
       rethrow;

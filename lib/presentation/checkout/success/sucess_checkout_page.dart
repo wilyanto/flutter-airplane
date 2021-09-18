@@ -1,8 +1,10 @@
+import 'package:airplane/cubit/bottom_navigation/page_cubit.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/routers/routers.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SuccessCheckoutPage extends StatelessWidget {
   @override
@@ -44,6 +46,7 @@ class SuccessCheckoutPage extends StatelessWidget {
               margin: const EdgeInsets.only(top: 50),
               title: 'My Bookings',
               onPressed: () {
+                context.read<PageCubit>().setSelectedPageIndex(1);
                 Get.offAllNamed(Routers.main);
               },
             )
