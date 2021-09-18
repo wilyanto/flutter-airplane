@@ -16,23 +16,27 @@ class SeatItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late bool isSelected;
+
     Color backgroundColor() {
       switch (status) {
-        case ESeatStatus.available:
-          return kAvailableColor;
         case ESeatStatus.unavailable:
           return kUnavailableColor;
+        case ESeatStatus.available:
         case ESeatStatus.selected:
-          return kPrimaryColor;
+          if (isSelected) {
+            return kPrimaryColor;
+          } else {
+            return kAvailableColor;
+          }
       }
     }
 
     Color borderColor() {
       switch (status) {
-        case ESeatStatus.available:
-          return kPrimaryColor;
         case ESeatStatus.unavailable:
           return kUnavailableColor;
+        case ESeatStatus.available:
         case ESeatStatus.selected:
           return kPrimaryColor;
       }
@@ -40,38 +44,49 @@ class SeatItem extends StatelessWidget {
 
     Widget child() {
       switch (status) {
-        case ESeatStatus.available:
-          return const SizedBox();
         case ESeatStatus.unavailable:
           return const SizedBox();
+        case ESeatStatus.available:
         case ESeatStatus.selected:
-          return Center(
-            child: Text(
-              'You',
-              style: whiteTextStyle.copyWith(
-                fontWeight: semiBold,
+          if (isSelected) {
+            return Center(
+              child: Text(
+                'You',
+                style: whiteTextStyle.copyWith(
+                  fontWeight: semiBold,
+                ),
               ),
-            ),
-          );
+            );
+          } else {
+            return const SizedBox();
+          }
       }
     }
 
     return GestureDetector(
       onTap: () {
-        context.read<SeatCubit>().selectSeat(seatId);
+        if (status != ESeatStatus.unavailable) {
+          context.read<SeatCubit>().selectSeat(seatId);
+        }
       },
-      child: Container(
-        width: 48,
-        height: 48,
-        decoration: BoxDecoration(
-          color: backgroundColor(),
-          borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-            color: borderColor(),
-            width: 2,
-          ),
-        ),
-        child: child(),
+      child: BlocBuilder<SeatCubit, List<String>>(
+        builder: (context, state) {
+          isSelected = context.read<SeatCubit>().isSelected(seatId);
+
+          return Container(
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(
+              color: backgroundColor(),
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(
+                color: borderColor(),
+                width: 2,
+              ),
+            ),
+            child: child(),
+          );
+        },
       ),
     );
   }

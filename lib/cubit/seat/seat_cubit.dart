@@ -4,7 +4,17 @@ class SeatCubit extends Cubit<List<String>> {
   SeatCubit() : super([]);
 
   void selectSeat(String id) {
-    state.add(id);
-    emit(state);
+    if (!isSelected(id)) {
+      state.add(id);
+    } else {
+      state.remove(id);
+    }
+    emit(List.from(state));
+  }
+
+  bool isSelected(String id) {
+    final index = state.indexOf(id);
+    if (index == -1) return false;
+    return true;
   }
 }

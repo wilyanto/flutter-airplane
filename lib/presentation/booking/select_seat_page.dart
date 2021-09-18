@@ -1,12 +1,23 @@
+import 'package:airplane/cubit/seat/seat_cubit.dart';
+import 'package:airplane/models/destination_model.dart';
 import 'package:airplane/presentation/booking/enums/e_seat_status.dart';
 import 'package:airplane/presentation/booking/widgets/seat_item.dart';
+import 'package:airplane/presentation/core/utils.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/routers/routers.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 class SelectSeatPage extends StatelessWidget {
+  const SelectSeatPage({
+    Key? key,
+    required this.destination,
+  }) : super(key: key);
+
+  final DestinationModel destination;
+
   @override
   Widget build(BuildContext context) {
     Widget title() => Container(
@@ -258,11 +269,19 @@ class SelectSeatPage extends StatelessWidget {
                       fontWeight: light,
                     ),
                   ),
-                  Text(
-                    'A3, B3',
-                    style: blackTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: medium,
+                  SizedBox(width: defaultMargin),
+                  Expanded(
+                    child: BlocBuilder<SeatCubit, List<String>>(
+                      builder: (context, state) {
+                        return Text(
+                          state.isEmpty ? 'No seat selected' : state.join(', '),
+                          textAlign: TextAlign.right,
+                          style: blackTextStyle.copyWith(
+                            fontSize: 16,
+                            fontWeight: medium,
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],
@@ -281,12 +300,18 @@ class SelectSeatPage extends StatelessWidget {
                       fontWeight: light,
                     ),
                   ),
-                  Text(
-                    'IDR 540.000.000',
-                    style: purpleTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: semiBold,
-                    ),
+                  BlocBuilder<SeatCubit, List<String>>(
+                    builder: (context, state) {
+                      return Text(
+                        getStringInCurrencyFormat(
+                          destination.price * state.length,
+                        ),
+                        style: purpleTextStyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: semiBold,
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

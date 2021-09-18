@@ -1,4 +1,5 @@
 import 'package:airplane/models/destination_model.dart';
+import 'package:airplane/presentation/core/utils.dart';
 import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/destination/widgets/interest_item.dart';
 import 'package:airplane/presentation/destination/widgets/photo_item.dart';
@@ -6,7 +7,6 @@ import 'package:airplane/presentation/routers/routers.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 class DestinationDetailPage extends StatelessWidget {
   const DestinationDetailPage({
@@ -228,12 +228,7 @@ class DestinationDetailPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            NumberFormat.currency(
-                              locale: 'id',
-                              symbol: 'IDR ',
-                              decimalDigits: 0,
-                            ).format(destinationModel.price),
-                            // 'IDR ${destinationModel.price}',
+                            getStringInCurrencyFormat(destinationModel.price),
                             style: blackTextStyle.copyWith(
                               fontSize: 18,
                               fontWeight: medium,
@@ -254,7 +249,10 @@ class DestinationDetailPage extends StatelessWidget {
                     CtaButton(
                       title: 'Book Now',
                       onPressed: () {
-                        Get.toNamed(Routers.selectSeat);
+                        Get.toNamed(
+                          Routers.selectSeat,
+                          arguments: destinationModel,
+                        );
                       },
                       width: 170,
                     ),

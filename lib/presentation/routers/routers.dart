@@ -59,7 +59,9 @@ class Routers {
     ),
     GetPage(
       name: Routers.selectSeat,
-      page: () => SelectSeatPage(),
+      page: () => SelectSeatPage(
+        destination: Get.arguments as DestinationModel,
+      ),
     ),
     GetPage(
       name: Routers.checkout,
