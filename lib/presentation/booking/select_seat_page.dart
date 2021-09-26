@@ -340,6 +340,7 @@ class SelectSeatPage extends StatelessWidget {
                   price: _price,
                   vat: 0.45,
                   grandTotal: _price + (_price * 0.45).toInt(),
+                  userId: '',
                 ),
               );
             },

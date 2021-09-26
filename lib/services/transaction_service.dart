@@ -1,4 +1,5 @@
 import 'package:airplane/models/transaction_model.dart';
+import 'package:airplane/services/user_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TransactionService {
@@ -13,6 +14,7 @@ class TransactionService {
   Future<void> createTransaction(TransactionModel transaction) async {
     try {
       transaction.createdAt = DateTime.now();
+      transaction.userId = UserService().getCurrentUser()!.uid;
       await _transactionRef.add(transaction);
     } catch (e) {
       rethrow;
@@ -21,10 +23,14 @@ class TransactionService {
 
   Future<List<TransactionModel>> fetchTransactions() async {
     try {
-      final querySnapshot =
-          await _transactionRef.orderBy('created_at', descending: true).get();
+      final _userId = UserService().getCurrentUser()!.uid;
+      final querySnapshot = await _transactionRef
+          .where('user_id', isEqualTo: _userId)
+          .orderBy('created_at', descending: true)
+          .get();
       return querySnapshot.docs.map((e) => e.data()).toList();
     } catch (e) {
+      print(e);
       rethrow;
     }
   }

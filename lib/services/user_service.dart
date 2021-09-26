@@ -1,5 +1,6 @@
 import 'package:airplane/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class UserService {
   final _userReference =
@@ -21,6 +22,15 @@ class UserService {
     try {
       final userModel = (await _userReference.doc(id).get()).data()!;
       return userModel;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  User? getCurrentUser() {
+    try {
+      final User? user = FirebaseAuth.instance.currentUser;
+      return user;
     } catch (e) {
       rethrow;
     }

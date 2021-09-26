@@ -1,5 +1,6 @@
 import 'package:airplane/models/destination_model.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 // ignore: must_be_immutable
 class TransactionModel extends Equatable {
@@ -13,6 +14,7 @@ class TransactionModel extends Equatable {
     this.vat = 0,
     this.price = 0,
     this.grandTotal = 0,
+    required this.userId,
     this.createdAt,
   });
 
@@ -30,6 +32,7 @@ class TransactionModel extends Equatable {
         vat: json['vat'] as double,
         price: json['price'] as int,
         grandTotal: json['grand_total'] as int,
+        userId: json['user_id'] as String,
         createdAt: json['created_at'] == null
             ? null
             : DateTime.fromMillisecondsSinceEpoch(
@@ -45,6 +48,7 @@ class TransactionModel extends Equatable {
         'vat': vat,
         'price': price,
         'grand_total': grandTotal,
+        'user_id': userId,
         'created_at': createdAt,
       };
 
@@ -57,6 +61,7 @@ class TransactionModel extends Equatable {
   final double vat;
   final int price;
   final int grandTotal;
+  String userId;
   DateTime? createdAt;
 
   @override
@@ -68,6 +73,7 @@ class TransactionModel extends Equatable {
         isRefundable,
         vat,
         price,
-        grandTotal
+        grandTotal,
+        userId,
       ];
 }
