@@ -58,7 +58,7 @@ class SignUpPage extends StatelessWidget {
               if (state is AuthSuccess) {
                 Get.offAllNamed(Routers.bonus);
               } else if (state is AuthFailed) {
-                CustomSnackBar().show(descrption: state.error);
+                CustomSnackBar().show(description: state.error);
               }
             },
             builder: (context, state) {

@@ -30,7 +30,6 @@ class TransactionService {
           .get();
       return querySnapshot.docs.map((e) => e.data()).toList();
     } catch (e) {
-      print(e);
       rethrow;
     }
   }

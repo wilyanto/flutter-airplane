@@ -187,7 +187,7 @@ class CheckoutPage extends StatelessWidget {
           if (state is TransactionSuccess) {
             Get.offAllNamed(Routers.checkoutSuccess);
           } else if (state is TransactionFailed) {
-            CustomSnackBar().show(descrption: state.error);
+            CustomSnackBar().show(description: state.error);
           }
         },
         builder: (context, state) {

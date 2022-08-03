@@ -13,6 +13,7 @@ class TransactionPage extends HookWidget {
   Widget build(BuildContext context) {
     useEffect(() {
       context.read<TransactionCubit>().fetchTransactions();
+      return null;
     });
 
     return BlocBuilder<TransactionCubit, TransactionState>(

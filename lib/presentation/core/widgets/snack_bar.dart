@@ -10,7 +10,7 @@ enum ESnackBarType {
 
 class CustomSnackBar {
   void show({
-    required String descrption,
+    required String description,
     ESnackBarType type = ESnackBarType.error,
   }) {
     Color backgroundColor() {
@@ -37,7 +37,7 @@ class CustomSnackBar {
 
     Get.snackbar(
       title(),
-      descrption,
+      description,
       colorText: kWhiteColor,
       snackPosition: SnackPosition.BOTTOM,
       isDismissible: true,

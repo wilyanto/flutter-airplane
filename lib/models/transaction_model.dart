@@ -1,6 +1,5 @@
 import 'package:airplane/models/destination_model.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
 // ignore: must_be_immutable
 class TransactionModel extends Equatable {

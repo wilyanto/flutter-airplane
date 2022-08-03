@@ -119,12 +119,13 @@ class HomePage extends HookWidget {
   Widget build(BuildContext context) {
     useEffect(() {
       context.read<DestinationCubit>().fetchDestinations();
+      return null;
     });
 
     return BlocConsumer<DestinationCubit, DestinationState>(
       listener: (context, state) {
         if (state is DestinationFailed) {
-          CustomSnackBar().show(descrption: state.error);
+          CustomSnackBar().show(description: state.error);
         }
       },
       builder: (context, state) {

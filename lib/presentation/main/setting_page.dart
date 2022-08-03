@@ -13,7 +13,7 @@ class SettingPage extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthFailed) {
-          CustomSnackBar().show(descrption: state.error);
+          CustomSnackBar().show(description: state.error);
         } else if (state is AuthInitial) {
           context.read<PageCubit>().setSelectedPageIndex(0);
           Get.offAllNamed(Routers.signIn);

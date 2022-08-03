@@ -3,8 +3,8 @@ import 'package:airplane/presentation/core/widgets/cta_button.dart';
 import 'package:airplane/presentation/routers/routers.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class SuccessCheckoutPage extends StatelessWidget {
   @override
